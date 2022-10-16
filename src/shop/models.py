@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.urls import reverse
 
@@ -19,15 +20,18 @@ class  Category(models.Model):
     
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    name = models.CharField(max_length=150, db_index=True)
-    slug = models.CharField(max_length=150, db_index=True, unique=True)
+    category = models.ForeignKey(Category, 
+                                related_name='products', 
+                                on_delete=models.CASCADE)
+    
+    name = models.CharField(max_length=150, db_index=True, verbose_name='Найменування')
+    slug = models.CharField(max_length=150, db_index=True, unique=True, verbose_name='Ссилка')
     image = models.ImageField(upload_to='product/%Y/%m/%d', blank=True)
-    description = models.TextField(max_length=1000, blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    uploaded = models.DateTimeField(auto_now=True)
+    description = models.TextField(max_length=1000, blank=True, verbose_name='Опис')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
+    available = models.BooleanField(default=True, verbose_name='Наявність')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Добавлений')
+    uploaded = models.DateTimeField(auto_now=True, verbose_name='Зміненний')
 
     class Meta:
         ordering = ('name',)
