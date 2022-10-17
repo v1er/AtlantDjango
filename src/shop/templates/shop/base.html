@@ -11,7 +11,18 @@
 <a href="/" class="logo">Магазин АТЛАНТ</a>
 </div>
 <div id="subheader">
-<div class="cart">Коризина пуста.</div>
+    <div class="cart">
+        {% with total_item=cart|length %}
+        {% if cart|length > 0 %}
+        В корзіні:
+        <a href="{% url 'cart:cart_detail' %}">
+            {{ total_item}} шт ,${{ cart.get_total_price }}
+        </a>
+        {% else %}
+            Корзіна пуста
+        {% endif %}
+        {% endwith %}
+    </div>
 </div>
 <div id="content">
 {% block content %}{% endblock %}
