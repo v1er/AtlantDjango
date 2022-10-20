@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block title %}
-  Корзина покупок
+  Кошик
 {% endblock %}
 
 {% block content %}
-  <h1>Корзіна покупок</h1>
+  <h1>Кошик</h1>
   <table class="cart">
     <thead>
       <tr>
@@ -55,6 +55,6 @@
   </table>
   <p class="text-right">
     <a href="{% url 'shop:product_list' %}" class="button light">В магазин</a>
-    <a href="#" class="button">Оформити заказ</a>
+    <a href="#" class="button">Оформити замовлення</a>
   </p>
 {% endblock %}

@@ -8,18 +8,23 @@
 </head>
 <body>
 <div id="header">
-<a href="/" class="logo">Магазин АТЛАНТ</a>
+    <a href="/" class="logo"><img src="{% static "img/logo.jpg" %}"></a>
+  <!--   <ul class="menu">
+        <li><a href="/">Головна</a></li>
+        <li><a href="#">Магазин</a></li>
+        <li><a href="#">Готель</a></li>
+    </ul>   -->  
 </div>
-<div id="subheader">
+<div id="subheader">    
     <div class="cart">
-        {% with total_item=cart|length %}
+        {% with total_item=cart|length %}   
         {% if cart|length > 0 %}
-        В корзині:
+        В кошику:
         <a href="{% url 'cart:cart_detail' %}">
             {{ total_item}} шт - {{ cart.get_total_price }} грн.
         </a>
         {% else %}
-            Корзіна пуста
+            Кошик пустий
         {% endif %}
         {% endwith %}
     </div>
